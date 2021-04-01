@@ -1,0 +1,52 @@
+﻿@using SürücüKursu.Entitites.ValueObject
+@model LoginViewModel
+
+@{
+    ViewBag.Title = "Olcay Sürücü Kursu - Giriş Sayfası";
+}
+<link href="~/Content/login-register.css" rel="stylesheet" />
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+<div class="sidenav">
+    <div class="login-main-text">
+        <h2>OLCAY SÜRÜCÜ KURSU<br> Giriş Sayfası</h2>
+        <p>
+            Sayfaya erişmek için buradan giriş yapın veya kayıt olun.
+        </p>
+    </div>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false)
+    <div class="main">
+        <div class="col-md-6 col-sm-12">
+            <div class="login-form">
+                <form>
+                    <div class="form-group">
+                        <label>Kullanıcı Adı</label>
+                        @Html.TextBoxFor(model => model.Username, new { @class = "form-control", placeholder = "Kullanıcı Adınız" })
+                        @*<input type="text" class="form-control" placeholder="User Name">*@
+                    </div>
+                    <div class="form-group">
+                        <label>Şifre</label>
+                        @Html.TextBoxFor(model => model.Password, new { @class = "form-control", placeholder = "Şifreniz", type = "password" })
+                        @*<input type="password" class="form-control" placeholder="Password">*@
+                    </div>
+                    <button type="submit" class="btn btn-black">Giriş</button>
+                    <button type="submit" class="btn btn-secondary">Kayıt Ol</button>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+    $(function () {
+        $("footer").hide();
+    });
+</script>

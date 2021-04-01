@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "RegisterOk";
+}
+
+<div class="container">
+    <h2 class="">&nbsp</h2>
+    <div class="row ">
+        <div class="col-lg-12">
+            <div class="card border-primary rounded-0">
+                <div class="card-header p-0">
+                    <div class="bg-info text-white text-center py-2">
+                        <h3><i class="fa fa-envelope"></i><strong>Kayıt Başarılı</strong></h3>
+                        <p class="m-0">E posta adresinize gelen aktivasyonu onaylayınız</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $("footer").hide();
+        setTimeout(function () {
+            window.location = "/Home/Index";
+        }, 3000);
+    });
+</script>

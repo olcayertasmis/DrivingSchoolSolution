@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Olcay Sürücü Kursu - Kayıt Sayfası";
+}
+@using SürücüKursu.Entitites.ValueObject
+@model RegisterViewModel
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container register-form">
+    <div class="form">
+        <div class="note">
+            <p><strong>Olcay Sürücü Kursu Kayıt Olma</strong></p>
+        </div>
+        <!------true olursa alttakilerin hata mesajlarını göstermez---------->
+
+        @using (Html.BeginForm("Register", "Home", FormMethod.Post))
+        {
+            @Html.ValidationSummary(false)
+            <div class="form-content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.TextBoxFor(model => model.Username, new { @class = "form-control", placeholder = "Kullanıcı adınız" })
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "E mailiniz" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.TextBoxFor(model => model.Password, new { @class = "form-control", placeholder = "Şifreniz", type = "password" })
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" value="kaydol" class="btn-success" />
+            </div>
+        }
+
+
+    </div>
+</div>
+<script>
+    $(function () {
+        $("footer").hide();
+    });
+</script>

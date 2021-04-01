@@ -1,0 +1,142 @@
+﻿@using SürücuKursu.Entities
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Olcay Sürücü Kursu</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+
+    <!-- Custom styles for this template -->
+    <link href="~/Content/small-business.css" rel="stylesheet" />
+    <style>
+        .loginbar li {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+    </style>
+    <script src="~/Scripts/jquery-3.5.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/d7188aeb4a.js" crossorigin="anonymous"></script>
+    @*<script language="javascript" src="http://ir.sitekodlari.com/yukaricik18.js"></script>*@
+
+
+</head>
+
+<body>
+    @*@{
+            SürücüKursuUser user = null;
+            if (Session["isadmin"] != null)
+            {
+                user = Session["isadmin"] as SürücüKursuUser;
+            }
+        }*@
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/Home/Index">
+                <img width="120" height="50" src="@Url.Content("~/Content/Images/olcaysurucu.png")" /> <strong>OLCAY SÜRÜCÜ KURSU</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link fas fa-home">
+                            @Html.ActionLink("Anasayfa", "Index")
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link fas fa-info">
+                            @Html.ActionLink("Hakkımızda", "About")
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link fab fa-servicestack">
+                            @Html.ActionLink("Hizmetler", "Services")
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link fas fa-phone">
+                            @Html.ActionLink("İletişim", "Contact")
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav loginbar navbar-nav navbar-right navbar-nav ml-auto">
+                    @if (Session["login"] == null)
+                    {
+                        <li class="nav-item active">
+                            <a class="fas fa-sign-in-alt">
+                                @Html.ActionLink(" Giriş", "Login")
+                            </a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="fas fa-user-plus">
+                                @Html.ActionLink(" Üye Ol", "Register")
+                            </a>
+                        </li>
+                    }
+
+                    else
+                    {
+                        if (Session["isadmin"] == "yönetici")
+                        {
+                            <li class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Yönetim Paneli
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="/Notes1/Create">İçerik Ekle</a>
+                                    <a class="dropdown-item" href="/Notes1/Index">İçerikleri Görüntüle</a>
+                                    @Html.ActionLink("notes", "Index")
+                                </div>
+                            </li>
+                        }
+                        <li class="nav-item disabled">
+                            <a>
+                                <i class="fas fa-user"></i>
+                                @if (Session["login"] != null)
+                                {
+                                    @Session["login"];
+                                }
+                            </a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="fas fa-sign-out-alt">
+                                @Html.ActionLink(" Çıkış", "Logout")
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main" class="pb-3">
+        <br />
+        @RenderBody()
+    </main>
+
+
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">
+                Copyright &copy; Olcay Sarı Sürücü Kursu Şirinevler Meydanı Toyak İş Merkezi Giriş Kat No:49 Şirinevler - Bahçelievler İSTANBUL
+                Telefonlar
+                0212 504 04 04 - 444 30 21 - ( 0551) 731 23 23
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

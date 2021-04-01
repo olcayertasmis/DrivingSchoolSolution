@@ -1,0 +1,28 @@
+﻿@using SürücuKursu.Entities
+@model List<Comment>
+
+@foreach (Comment item in Model)
+{
+    <div class="media">
+        <div class="media-left media-middle">
+            <div class="media-object">
+                <span> class=""</span>
+            </div>
+        </div>
+        <div class="media-body">
+            <div>
+                <span>
+                    @item.Text
+                </span>
+                <br />
+                <small>
+                    <span>
+                        @item.CreatedOn &nbsp;&nbsp;&nbsp;
+                        @item.Owner.Username
+                    </span>
+                </small>
+            </div>
+        </div>
+    </div>
+}
+
